@@ -21,3 +21,17 @@ namespace :create do
     end
   end
 end
+
+namespace :create do
+  desc "create schools"
+  task :schools => :environment do
+    file = "db/schools.csv" 
+    puts "******* creating states******"
+    CSV.foreach(file, :headers => true) do |row|
+      a = School.create!(row.to_hash)
+      puts a.inspect
+    end
+  end
+end
+
+
