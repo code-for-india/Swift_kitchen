@@ -10,4 +10,14 @@ namespace :create do
       puts a.inspect
     end
   end
+  
+  desc "create schools"
+  taks :schools => environment do
+    file = "db/schools.csv"
+    puts "********creating schools*******"
+    CSV.foreach(file, :headers => true) do |row|
+     a = School.create!(row.to_hash) 
+      puts a.inspect
+    end
+  end
 end
