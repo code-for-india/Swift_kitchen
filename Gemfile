@@ -15,7 +15,7 @@ gem 'gmaps4rails'
 gem 'underscore-rails'
 gem "select2-rails"
 gem 'simple_form'
-
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 group :production do
  gem 'pg' 
  gem 'rails_12factor'
