@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @route.name %>
+</p>
+
+<p>
+  <strong>Route code:</strong>
+  <%= @route.route_code %>
+</p>
+
+<p>
+  <strong>Kitchen:</strong>
+  <%= @route.kitchen %>
+</p>
+
+<%= link_to 'Edit', edit_route_path(@route) %> |
+<%= link_to 'Back', routes_path %>

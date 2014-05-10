@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140510072858) do
+ActiveRecord::Schema.define(version: 20140510091408) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -30,5 +30,45 @@ ActiveRecord::Schema.define(version: 20140510072858) do
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+
+  create_table "drivers", force: true do |t|
+    t.string   "device_id"
+    t.string   "name"
+    t.string   "phone"
+    t.integer  "kitchen_id"
+    t.integer  "route_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "drivers", ["kitchen_id"], name: "index_drivers_on_kitchen_id"
+  add_index "drivers", ["route_id"], name: "index_drivers_on_route_id"
+
+  create_table "kitchens", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "routes", force: true do |t|
+    t.string   "name"
+    t.string   "route_code"
+    t.integer  "kitchen_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "routes", ["kitchen_id"], name: "index_routes_on_kitchen_id"
+
+  create_table "schools", force: true do |t|
+    t.string   "name"
+    t.string   "longitude"
+    t.string   "latitude"
+    t.integer  "route_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "schools", ["route_id"], name: "index_schools_on_route_id"
 
 end
