@@ -12,262 +12,98 @@
     android:scrollbars="horizontal|vertical"
     tools:context=".FirstPage" >
 
-    <RelativeLayout
-        android:id="@+id/relative_layout1"
-        android:layout_width="wrap_content"
-        android:layout_height="635dp"
-        android:layout_marginLeft="6dp"
-        android:background="#000000"
-        android:fadingEdge="horizontal"
-        android:fitsSystemWindows="true"
-        android:gravity="center_horizontal"
-        android:minHeight="80dp"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:scrollbars="horizontal|vertical"
-        tools:context=".FirstPage" >
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/image_view"
-            android:layout_centerHorizontal="true"
-            android:contentDescription="@string/empty"
-            android:focusable="false"
-            android:orientation="vertical"
-            android:paddingBottom="-10dp"
-            android:paddingLeft="-10dp"
-            android:paddingTop="-10dp"
-            android:src="@drawable/grey"
-            android:tileMode="repeat" />
-
-        <TextView
-            android:id="@+id/myImageViewText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView2"
-            android:layout_alignLeft="@+id/imageView2"
-            android:layout_alignRight="@+id/imageView2"
-            android:layout_alignTop="@+id/imageView2"
-            android:layout_margin="1dp"
-            android:focusable="false"
-            android:gravity="right"
-            android:paddingRight="6dp"
-            android:textColor="#FFFFFF"
-            android:textIsSelectable="false"
-            android:textSize="18sp" />
-
-        <ImageView
-            android:id="@+id/image_view"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:contentDescription="@string/akslogo"
-            android:focusable="false"
-            android:src="@drawable/apl" />
-
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="130dp"
-            android:layout_height="90dp"
-            android:layout_alignRight="@+id/imageView2"
-            android:layout_alignTop="@+id/image_view"
-            android:contentDescription="@string/cfilogo"
-            android:focusable="false"
-            android:layout="@+id/image_view"
-            android:src="@drawable/cfil" >
-        </ImageView>
-
-
-        <LinearLayout
-            android:id="@+id/linearlayout"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/imageView2"
-            android:layout_marginRight="5dp"
-            android:orientation="vertical"
-            android:paddingTop="3dp" >
-
-            <View
-                android:id="@+id/redLine0"
-                android:layout_width="1280dp"
-                android:layout_height="1dp"
-                android:background="@drawable/red_grad_bg_26"
-                />
-            
-            <Button
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:text="Pull Route"/>
-
-            <Button
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:text="Start Nav"/>
-
-            <Button
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:text="Configure"/>
-            
-        </LinearLayout>
- <!--
-        
-        <LinearLayout
-            android:id="@+id/epg"
-            android:layout_width="fill_parent"
-            android:layout_height="180dp"
-            android:layout_alignParentBottom="true"
-            android:gravity="fill_vertical">
-
-            <TextView
-                android:id="@+id/tv_guide"
-                android:layout_width="137dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="6dip"
-                android:focusable="true"
-                android:nextFocusDown="@+id/launcher_text"
-                android:nextFocusLeft="@+id/launcher_text"
-                android:nextFocusRight="@+id/vod_text"
-                android:nextFocusUp="@+id/vod_text"
-                android:paddingTop="6dp"
-                android:textColor="@drawable/button_col"
-                android:textIsSelectable="false"
-                android:textSize="20sp"
-                android:typeface="serif" />
-            
-            <TextView
-                android:id="@+id/vod_text"
-                android:layout_width="137dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="6dip"
-                android:focusable="true"
-                android:nextFocusDown="@+id/tv_guide"
-                android:nextFocusLeft="@+id/tv_guide"
-                android:nextFocusRight="@+id/favorite"
-                android:nextFocusUp="@+id/favorite"
-                android:paddingTop="6dp"
-                android:textColor="@drawable/button_col"
-                android:textIsSelectable="false"
-                android:textSize="20sp"
-                android:typeface="serif" />
-
-            <TextView
-                android:id="@+id/favorite"
-                android:layout_width="138dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="6dip"
-                android:contentDescription="@string/empty"
-                android:focusable="true"
-                android:nextFocusDown="@+id/vod_text"
-                android:nextFocusLeft="@+id/vod_text"
-                android:nextFocusRight="@+id/setting_text"
-                android:nextFocusUp="@+id/setting_text"
-                android:paddingTop="6dp"
-                android:textColor="@drawable/button_col"
-                android:textIsSelectable="false"
-                android:textSize="20sp"
-                android:typeface="serif" />
-
-    
-            <TextView
-                android:id="@+id/setting_text"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="6dip"
-                android:contentDescription="@string/settings"
-                android:focusable="true"
-                android:nextFocusDown="@+id/favorite"
-                android:nextFocusLeft="@+id/favorite"
-                android:nextFocusRight="@+id/launcher_text"
-                android:nextFocusUp="@+id/launcher_text"
-                android:paddingLeft="5dp"
-                android:paddingTop="6dp"
-                android:textColor="@drawable/button_col"
-                android:textIsSelectable="false"
-                android:textSize="20sp"
-                android:typeface="serif" />
-
-            
-        </LinearLayout>
-    </RelativeLayout>
-
-   <LinearLayout
-        android:id="@+id/linearlayout04"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_alignBottom="@+id/relative_layout1"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="7dp"
-        android:layout_marginRight="5dp"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_view"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/empty"
         android:focusable="false"
         android:orientation="vertical"
-        android:paddingTop="60dp" >
+        android:paddingBottom="-10dp"
+        android:paddingLeft="-10dp"
+        android:paddingTop="-10dp"
+        android:src="@drawable/grey"
+        android:tileMode="repeat" />
 
-        <View
-            android:id="@+id/redLine"
-            android:layout_width="1280dp"
-            android:layout_height="1dp"
-            android:background="@drawable/red_grad_bg_26"
-            android:focusable="false"
-            android:paddingBottom="4dp" />
-    </LinearLayout>
-    -->
+    <TextView
+        android:id="@+id/myImageViewText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_alignLeft="@+id/imageView2"
+        android:layout_alignRight="@+id/imageView2"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_margin="1dp"
+        android:focusable="false"
+        android:gravity="right"
+        android:paddingRight="6dp"
+        android:textColor="#FFFFFF"
+        android:textIsSelectable="false"
+        android:textSize="18sp" />
 
-</RelativeLayout>
-</RelativeLayout>
-
-
-<!-- 
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentRight="true"
-    android:layout_marginTop="0dp"
-    android:columnCount="5"
-    tools:context=".MainActivity" >
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/akslogo"
+        android:focusable="false"
+        android:src="@drawable/apl" />
 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="130dp"
-        android:layout_height="50dp"
-        android:contentDescription="@string/akslogo"
-        android:src="@drawable/apl" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="90dp"
-        android:layout_height="50dp"
-        android:layout_column="3"
-        android:layout_gravity="right"
-        android:contentDescription="@string/empty"
-        android:src="@drawable/abc_ab_bottom_transparent_dark_holo" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="130dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
+        android:layout_height="90dp"
+        android:layout_alignRight="@+id/imageView2"
+        android:layout_alignTop="@+id/image_view"
         android:contentDescription="@string/cfilogo"
-        android:src="@drawable/cfil" />
+        android:focusable="false"
+        android:layout="@+id/image_view"
+        android:src="@drawable/cfil" >
+    </ImageView>
 
-    <ListView
-        android:id="@+id/listView1"
-        android:layout_width="158dp"
-        android:layout_height="184dp"
-        android:layout_column="1"
-        android:layout_gravity="center_horizontal"
-        android:layout_row="3" >
-    </ListView>
+    <LinearLayout
+        android:id="@+id/linearlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imageView2"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        android:paddingTop="3dp" >
 
-</GridLayout> 
--->
+        <View
+            android:id="@+id/redLine0"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/red_grad_bg_26" />
+
+        <Button
+            android:id="@+id/pullRoute"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Pull Route" />
+
+        <Button
+            android:id="@+id/startNav"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Start Nav" />
+
+        <Button
+            android:id="@+id/setting"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Configure" />
+    </LinearLayout>
+
+</RelativeLayout>
