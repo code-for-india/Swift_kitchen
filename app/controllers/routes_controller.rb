@@ -1,5 +1,7 @@
+require 'net/http'
+
 class RoutesController < ApplicationController
-  before_action :set_route, only: [:show, :edit, :update, :destroy]
+  before_action :set_route, only: [:show, :edit, :update, :destroy,:optimizeRoute]
 
   # GET /routes
   # GET /routes.json
@@ -61,6 +63,34 @@ class RoutesController < ApplicationController
     end
   end
 
+  def optimizeRoute
+    puts @route.id
+    schools = @route.schools.reverse
+    kitchen = @route.kitchen
+    path = "https://maps.googleapis.com/maps/api/directions/json?"
+    path += "origin="+kitchen.latitude.to_s+","+kitchen.longitude.to_s
+    path += "&destination="+kitchen.latitude.to_s+","+kitchen.longitude.to_s
+    path += "&waypoints=optimize:true|"
+    schools.each do |school|
+      path += school.latitude.to_s+","+school.longitude.to_s+"|"
+    end
+    path += "&key=AIzaSyAh6c9pSW1QOaRKT152xUdsIrF6-W6Pwns"
+    path += "&sensor=false"
+    puts path
+#    path = "https://maps.googleapis.com/maps/api/directions/json?origin=13.045227,77.489358&destination=13.045227,77.489358&waypoints=optimize:true|13.009242,77.609743|13.053467,77.472150|13.043653,77.484085&sensor=false&key=AIzaSyAh6c9pSW1QOaRKT152xUdsIrF6-W6Pwns"
+    encoded_url = URI.encode(path)
+    puts encoded_url
+    uri = URI.parse(encoded_url)
+    response = Net::HTTP.get_response(uri)
+    response = JSON.parse(response.body)
+    waypoint_order = response["routes"][0]["waypoint_order"]
+    puts waypoint_order
+    waypoint_order.each do |i|
+      puts schools[i].name
+      puts "Value of local variable is #{i}"
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_route
@@ -71,4 +101,11 @@ class RoutesController < ApplicationController
     def route_params
       params.require(:route).permit(:name, :route_code, :kitchen_id)
     end
+
+    def path_with_params(path, params)
+#       encoded_params = URI.encode_www_form(params)
+       retVal = [path, params].join("&")
+
+       return retVal
+    end    
 end
