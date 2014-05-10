@@ -2,6 +2,7 @@ require 'net/http'
 
 class RoutesController < ApplicationController
   before_action :set_route, only: [:show, :edit, :update, :destroy,:optimizeRoute]
+  before_action :set_route_from_device, only: [:optimize]
   before_action :authenticate_admin! ,except:[:optimizeRoute]
   # GET /routes
   # GET /routes.json
@@ -94,8 +95,45 @@ class RoutesController < ApplicationController
     render json: a
   end
 
+  def optimize
+    schools = @route.schools.reverse
+    kitchen = @route.kitchen
+    path = "https://maps.googleapis.com/maps/api/directions/json?"
+    path += "origin="+kitchen.latitude.to_s+","+kitchen.longitude.to_s
+    path += "&destination="+kitchen.latitude.to_s+","+kitchen.longitude.to_s
+    path += "&waypoints=optimize:true|"
+    schools.each do |school|
+      path += school.latitude.to_s+","+school.longitude.to_s+"|"
+    end
+    path += "&key=AIzaSyAh6c9pSW1QOaRKT152xUdsIrF6-W6Pwns"
+    path += "&sensor=false"
+    puts path
+#    path = "https://maps.googleapis.com/maps/api/directions/json?origin=13.045227,77.489358&destination=13.045227,77.489358&waypoints=optimize:true|13.009242,77.609743|13.053467,77.472150|13.043653,77.484085&sensor=false&key=AIzaSyAh6c9pSW1QOaRKT152xUdsIrF6-W6Pwns"
+    encoded_url = URI.encode(path)
+#    puts encoded_url
+    uri = URI.parse(encoded_url)
+    response = Net::HTTP.get_response(uri)
+    response = JSON.parse(response.body)
+    waypoint_order = response["routes"][0]["waypoint_order"]
+#    puts waypoint_order
+    a=[]
+    x=0
+    waypoint_order.each do |i|
+      a[x] = schools[i]
+      x = x+1
+    end
+    render json: a
+  end
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_route_from_device
+      driver = Driver.find_by_device_id(params[:device_id])
+      @route = driver.route
+    end
+
     def set_route
       @route = Route.find(params[:id])
     end
