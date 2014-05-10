@@ -3,7 +3,7 @@ require 'net/http'
 class RoutesController < ApplicationController
   before_action :set_route, only: [:show, :edit, :update, :destroy,:optimizeRoute]
   before_action :set_route_from_device, only: [:optimize]
-  before_action :authenticate_admin! ,except:[:optimizeRoute]
+  before_action :authenticate_admin! ,except:[:optimizeRoute,:optimize]
   # GET /routes
   # GET /routes.json
   def index
