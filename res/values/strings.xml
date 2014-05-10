@@ -2,7 +2,11 @@
 <resources>
 
     <string name="app_name">SwiftKitchen</string>
+    <string name="map">SwiftMap</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    <string name="cfilogo">CodeForIndia</string>
+    <string name="akslogo">Akshay</string>
+    <string name="empty">empty</string>
+    <string name="settings">Setting</string>
 </resources>
