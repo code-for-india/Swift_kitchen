@@ -1,12 +1,12 @@
 package com.swiftkitchen.android.maps;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
 
 public class FirstPage extends Activity {
 
@@ -27,6 +27,8 @@ public class FirstPage extends Activity {
 			case R.id.pullRoute:
 				button.setBackgroundColor(0xff000000);
 				button.setTextColor(0xffffffff);
+				Intent intent = new Intent(FirstPage.this, PullRoute.class);
+				startService(intent);
 				break;
 			case R.id.startNav:
 				button.setBackgroundColor(0xff000000);
