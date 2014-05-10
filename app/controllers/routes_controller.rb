@@ -86,10 +86,13 @@ class RoutesController < ApplicationController
     response = JSON.parse(response.body)
     waypoint_order = response["routes"][0]["waypoint_order"]
     puts waypoint_order
+    a=[]
+    x=0
     waypoint_order.each do |i|
-      puts schools[i].name
-      puts "Value of local variable is #{i}"
+      a[x] = schools[i]
+      x = x+1
     end
+    render json: a
   end
 
   private
