@@ -69,6 +69,6 @@ class KitchensController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def kitchen_params
-      params.require(:kitchen).permit(:name)
+      params.require(:kitchen).permit(:name,:longitude,:latitude)
     end
 end

@@ -4,6 +4,14 @@
   <strong>Name:</strong>
   <%= @kitchen.name %>
 </p>
+<p>
+  <strong>Latitude:</strong>
+  <%= @kitchen.latitude %>
+</p>
+<p>
+  <strong>Longitude:</strong>
+  <%= @kitchen.longitude %>
+</p>
 
 <%= link_to 'Edit', edit_kitchen_path(@kitchen) %> |
 <%= link_to 'Back', kitchens_path %>
