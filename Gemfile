@@ -34,6 +34,8 @@ gem 'spring',        group: :development
 gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'gmaps4rails'
+gem 'underscore-rails'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
