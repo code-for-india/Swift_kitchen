@@ -1,5 +1,6 @@
 class RoutesController < ApplicationController
   before_action :set_route, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!
 
   # GET /routes
   # GET /routes.json

@@ -13,6 +13,8 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem "select2-rails"
+gem 'simple_form'
 
 group :production do
  gem 'pg' 
