@@ -2,8 +2,7 @@ require 'net/http'
 
 class RoutesController < ApplicationController
   before_action :set_route, only: [:show, :edit, :update, :destroy,:optimizeRoute]
-  before_action :authenticate_admin!
-
+  before_action :authenticate_admin! ,except:[:optimizeRoute]
   # GET /routes
   # GET /routes.json
   def index
@@ -80,12 +79,12 @@ class RoutesController < ApplicationController
     puts path
 #    path = "https://maps.googleapis.com/maps/api/directions/json?origin=13.045227,77.489358&destination=13.045227,77.489358&waypoints=optimize:true|13.009242,77.609743|13.053467,77.472150|13.043653,77.484085&sensor=false&key=AIzaSyAh6c9pSW1QOaRKT152xUdsIrF6-W6Pwns"
     encoded_url = URI.encode(path)
-    puts encoded_url
+#    puts encoded_url
     uri = URI.parse(encoded_url)
     response = Net::HTTP.get_response(uri)
     response = JSON.parse(response.body)
     waypoint_order = response["routes"][0]["waypoint_order"]
-    puts waypoint_order
+#    puts waypoint_order
     a=[]
     x=0
     waypoint_order.each do |i|
