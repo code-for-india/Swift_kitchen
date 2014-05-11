@@ -156,11 +156,20 @@ public class ExecuteRequest extends IntentService {
 			if (entity != null) {
 				InputStream instream = entity.getContent();
 				String response = convertStreamToString(instream);
+				
+				Log.d("Execute Request", "HTTP Response: "+response);
 
 				//putInDB(response, parsingClass);
 
 				Bundle responseBundle = new Bundle();
 				responseBundle.putString("result", response);
+				
+				try {
+				ParseRoutePoints pRP = new ParseRoutePoints(response);
+				GlobalConstant.routePoints = pRP.parseJSON();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				// Closing the input stream will trigger connection release
 				instream.close();
 			}
@@ -174,44 +183,6 @@ public class ExecuteRequest extends IntentService {
 		}
 	}
 
-/*	private void putInDB(String response, String parsingClass) {
-
-		if (parsingClass.equalsIgnoreCase("channels")) {
-
-			obj0 = new parsingChannel(response);
-			try {
-				Log.d("Channel Handler", "Calling parsing function..");
-				MadilProxy.ChannelList = obj0.parseJSON();
-				MadilProxy.chanFilled = true;
-			} catch (Exception e) {
-				Log.d("Channel Handler", "Error in Parsing function Call..");
-			}
-		} else if (parsingClass.equalsIgnoreCase("events")) {
-			eList = null;
-			obj1 = parsingEvents.getParseEventObj();
-			obj1.updateEventStrValue(response);
-			try {
-				MadilProxy.EventList = obj1.parseJSON();
-				MadilProxy.eventsFilled = true;
-			} catch (Exception e) {
-				Log.d("Event Handler", "Error in Event parsing function Call..");
-			}
-			// updateEvent();
-
-		} else if (parsingClass.equalsIgnoreCase("genre")) {
-
-			Log.d("madilservice",
-					"@#@ inside mhandlerget3 intent and thread id is..."
-							+ Thread.currentThread().getId());
-			obj3 = new parsingGenre(response);
-			try {
-				MadilProxy.GenreList = obj3.parseJSON();
-				MadilProxy.genreFilled = true;
-			} catch (Exception e) {
-				Log.d("Event Handler", e + "");
-			}
-		}
-	}*/
 
 	private static String convertStreamToString(InputStream is) {
 

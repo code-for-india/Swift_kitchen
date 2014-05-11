@@ -55,7 +55,7 @@ package com.swiftkitchen.android.maps;
 											// GET
 											// verb
 					Log.d("PullRoute",
-							"calling rest execute");
+							"called rest execute");
 					
 				} catch (Exception e) {
 					Log.d("PullRoute",
