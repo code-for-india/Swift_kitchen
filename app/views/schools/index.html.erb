@@ -17,7 +17,9 @@
         <td><%= school.name %></td>
         <td><%= school.longitude %></td>
         <td><%= school.latitude %></td>
-        <td><%= school.route %></td>
+        <% unless school.route.nil? %>
+        <td><%= school.route.name %></td>
+        <% end %>
         <td><%= link_to 'Edit', edit_school_path(school), class: "btn btn-info" %></td>
         <td><%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
       </tr>

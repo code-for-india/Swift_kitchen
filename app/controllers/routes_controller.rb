@@ -113,7 +113,9 @@ class RoutesController < ApplicationController
 #    puts encoded_url
     uri = URI.parse(encoded_url)
     response = Net::HTTP.get_response(uri)
+    puts response.body
     response = JSON.parse(response.body)
+
     waypoint_order = response["routes"][0]["waypoint_order"]
 #    puts waypoint_order
     a=[]

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
    root 'dashboard#index'
    get '/routes/:id/optimizeRoute'  => 'routes#optimizeRoute'
    get '/optimize/:device_id' => 'routes#optimize'
+   get '/optimizeRoute' => 'dashboard#optimize'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
