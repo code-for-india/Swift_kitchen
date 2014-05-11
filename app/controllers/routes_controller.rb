@@ -125,6 +125,7 @@ class RoutesController < ApplicationController
     end
     test["routes"] = a
     test["route_name"] = @route.name
+    test["kitchen"] = kitchen
     render json: test
   end
 
