@@ -117,12 +117,15 @@ class RoutesController < ApplicationController
     waypoint_order = response["routes"][0]["waypoint_order"]
 #    puts waypoint_order
     a=[]
+    test = {}
     x=0
     waypoint_order.each do |i|
       a[x] = schools[i]
       x = x+1
     end
-    render json: a
+    test["routes"] = a
+    test["route_name"] = @route.name
+    render json: test
   end
 
 
