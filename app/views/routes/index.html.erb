@@ -11,13 +11,15 @@
   </thead>
 
   <tbody>
-    <% @routes.each do |route| %>
+    <% @routes.reverse.each do |route| %>
       <tr>
         <td><%= route.name %></td>
         <td><%= route.route_code %></td>
-        <td><%= route.kitchen %></td>
+        <% unless route.kitchen.nil? %>
+        <td><%= route.kitchen.name %></td>
+        <% end %>
         <td><%= link_to 'Edit', edit_route_path(route), class: 'btn btn-info' %></td>
-        <td><%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <td><%= link_to 'Delete', route, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>

@@ -31,7 +31,7 @@ class RoutesController < ApplicationController
 
     respond_to do |format|
       if @route.save
-        format.html { redirect_to @route, notice: 'Route was successfully created.' }
+        format.html { redirect_to routes_path, notice: 'Route was successfully created.' }
         format.json { render :show, status: :created, location: @route }
       else
         format.html { render :new }
@@ -113,7 +113,9 @@ class RoutesController < ApplicationController
 #    puts encoded_url
     uri = URI.parse(encoded_url)
     response = Net::HTTP.get_response(uri)
+    puts response.body
     response = JSON.parse(response.body)
+
     waypoint_order = response["routes"][0]["waypoint_order"]
 #    puts waypoint_order
     a=[]
@@ -125,6 +127,7 @@ class RoutesController < ApplicationController
     end
     test["routes"] = a
     test["route_name"] = @route.name
+    test["kitchen"] = kitchen
     render json: test
   end
 

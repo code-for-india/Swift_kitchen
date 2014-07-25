@@ -11,7 +11,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'devise'
-gem 'gmaps4rails'
 gem 'underscore-rails'
 gem "select2-rails"
 gem 'simple_form'

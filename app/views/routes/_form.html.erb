@@ -1,4 +1,4 @@
-<%= form_for(@route, :html => {:class => "form-horizontal"} ) do |f| %>
+<%= simple_form_for(@route, :html => {:class => "form-horizontal"} ) do |f| %>
   <% if @route.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@route.errors.count, "error") %> prohibited this route from being saved:</h2>
@@ -22,6 +22,10 @@
   <div class="field">
     <%= f.label :kitchen_id, class: "control-label"  %><br>
     <%= f.text_field :kitchen_id , class:"form-control" %>
+  </div>
+  <div class="field ">
+    <%# f.input :schools, collection: School.all, class: "select-schools" %>
+    <%= f.association :schools %>
   </div>
   <div class="actions">
     <%= f.submit class: "btn btn-success" %>
